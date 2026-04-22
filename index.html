@@ -1,28 +1,93 @@
 <!doctype html>
 <html>
   <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
+    <title>SEA Fashion | Home</title>
+    <meta name="description" content="A Catalog of Fashion Items" />
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="scripts.js"></script>
   </head>
 
   <body>
     <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
+      <div class="top-bar">
+        <img src="images/Title.png" alt="CloPin Logo" class="logo-title" />
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by item name"
+        />
+
+        <button id="searchButton">Search</button>
+        <button id="allButton">All</button>
+        <button id="topsButton">Tops</button>
+        <button id="bottomsButton">Bottoms</button>
+        <button id="accessoriesButton">Accessories</button>
+      </div>
     </header>
-    <div id="card-container"></div>
+
+    <div class="main-section">
+      <div class="outfit-picker">
+        <h2>Outfit Picker</h2>
+
+        <div class="outfit-display">
+          <img id="headImage" src="images/head.png" alt="Head" />
+          <img id="topImage" src="images/greenTop.png" alt="Top outfit piece" />
+          <img id="bottomImage" src="images/Blue.png" alt="Bottom outfit piece" />
+        </div>
+
+        <p id="topName">Green Peackock Shirt</p>
+        <p id="bottomName">Blue Low-waisted Jeans</p>
+
+        <button id="randomOutfitButton">Randomize Outfit</button>
+      </div>
+
+      <div class="right-section">
+        <p id="noName" style="display: none;">No matching item found.</p>
+        <div id="card-container"></div>
+      </div>
+    </div>
+
     <div class="card" style="display: none">
       <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
+        <h2>Fashion Item</h2>
+
+        <div class="image-box">
+          <img src="" alt="Fashion Item Image" />
+        </div>
+
         <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
+          <li>Category</li>
         </ul>
       </div>
     </div>
+
+    <div id="popupOverlay" class="popup-overlay" style="display: none;">
+      <div class="popup-box">
+        <button id="closePopupButton" class="close-popup">X</button>
+
+        <h2 id="popupTitle">Item Name</h2>
+
+        <div class="popup-image-box">
+          <img id="popupImage" src="" alt="Popup item image" />
+        </div>
+
+        <div class="popup-info">
+          <label for="lastWornInput">Last Worn Date</label>
+          <input type="date" id="lastWornInput" />
+
+          <label for="notesInput">Notes</label>
+          <textarea id="notesInput" rows="4" placeholder="Write notes here..."></textarea>
+
+          <p id="wearCountText">Times worn: 0</p>
+
+          <button id="woreTodayButton">Wore Today</button>
+
+          <button id="savePopupButton">Save</button>
+        </div>
+      </div>
+    </div>
+
     <div class="footer">
       <button onclick="quoteAlert()">Get A Quote!</button>
       <button onclick="removeLastCard()">Remove A Card!</button>
