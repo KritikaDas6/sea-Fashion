@@ -116,8 +116,7 @@ function showCards() {
   for (let i = 0; i < fashionItems.length; i++) {
     const item = fashionItems[i];
 
-    const nextCard =
-      templateCard.cloneNode(true);
+    const nextCard =  templateCard.cloneNode(true);
 
     editCardContent(nextCard, item);
 
@@ -151,38 +150,34 @@ function showTops() {
 
   allCards.innerHTML = "";
 
-  const templateCard =
-    document.querySelector(".card");
+  const templateCard =    document.querySelector(".card");
 
   for (let i = 0; i < fashionItems.length; i++) {
     if (fashionItems[i].category === "Tops") {
       const topCard =
         templateCard.cloneNode(true);
 
-      editCardContent(
-        topCard,
-        fashionItems[i]
-      );
+      editCardContent( topCard, fashionItems[i]);
       allCards.appendChild(topCard);
     }
   }
 }
 
+ 
+
 function showBottoms() {
-  const allCards =
-    document.getElementById("card-container");
+  const allCards = document.getElementById("card-container");
 
   allCards.innerHTML = "";
 
-  const templateCard =
-    document.querySelector(".card");
+  const templateCard = document.querySelector(".card");
 
   for (let i = 0; i < fashionItems.length; i++) {
     if (
       fashionItems[i].category === "Bottoms"
     ) {
       const bottomCard =
-        templateCard.cloneNode(true);
+       templateCard.cloneNode(true);
 
       editCardContent(
         bottomCard,
@@ -205,8 +200,7 @@ function showAccessories() {
 
   for (let i = 0; i < fashionItems.length; i++) {
     if (
-      fashionItems[i].category ===
-      "Accessories"
+      fashionItems[i].category === "Accessories"
     ) {
       const accessoryCard =
         templateCard.cloneNode(true);
@@ -242,8 +236,7 @@ function searchByName() {
   let foundMatch = false;
 
   for (let i = 0; i < fashionItems.length; i++) {
-    const itemName =
-      fashionItems[i].name.toLowerCase();
+    const itemName = fashionItems[i].name.toLowerCase();
 
     let match = true;
     for (let j = 0; j < input.length; j++) {
@@ -256,10 +249,7 @@ function searchByName() {
       const matchCard =
         templateCard.cloneNode(true);
 
-      editCardContent(
-        matchCard,
-        fashionItems[i]
-      );
+      editCardContent( matchCard,fashionItems[i]);
 
       allCards.appendChild(matchCard);
 
@@ -273,6 +263,31 @@ function searchByName() {
     noMatch.style.display = "none";
   }
 }
+
+
+function filterOut(){
+  // Retrieve the text from the filterInput search bar 
+  const filterText = document.getElementById('filterInput').value.toLowerCase()
+  // rest of your function below: 
+  const arr = [];
+  
+
+//new array -> display cards
+  for(let i =0; i< fashionItems.length(); i++){ //[_,_,_]
+     if( !((fashionItems[i].names).includes(filterText))){
+
+        arr.push(fashionItems[i]); 
+     }
+
+  }
+  //input of search -> check that with a part of the .name of
+ 
+  // for loop: compare it to go through array names.inlcudes("input")
+
+  //.includes(//string)
+  
+}
+
 
 function hideNoMatchMessage() {
   const noMatch =
@@ -390,18 +405,13 @@ function woreToday() {
   }
 
   const today =
-    new Date()
-      .toISOString()
-      .split("T")[0];
+    new Date() .toISOString().split("T")[0];
 
   currentItem.lastWorn = today;
 
-  currentItem.wearCount =
-    currentItem.wearCount + 1;
+  currentItem.wearCount = currentItem.wearCount + 1;
 
-  document.getElementById(
-    "lastWornInput"
-  ).value = today;
+  document.getElementById( "lastWornInput").value = today;
 
   document.getElementById(
     "wearCountText"
@@ -445,9 +455,8 @@ document.addEventListener(
 
     randomizeOutfit();
 
-    document
-      .getElementById("allButton")
-      .addEventListener(
+    document.getElementById("allButton")
+        .addEventListener(
         "click",
         function (e) {
           e.preventDefault();
@@ -478,8 +487,7 @@ document.addEventListener(
         }
       );
 
-    document
-      .getElementById(
+    document.getElementById(
         "accessoriesButton"
       )
       .addEventListener(
@@ -490,6 +498,8 @@ document.addEventListener(
           showAccessories();
         }
       );
+
+
 
     document
       .getElementById(

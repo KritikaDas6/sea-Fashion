@@ -268,7 +268,6 @@ button:hover {
   height: 140px;
   object-fit: contain;
 }
-
 .popup-info {
   text-align: left;
 }
@@ -306,9 +305,6 @@ button:hover {
   margin-top: 10px;
   margin-bottom: 12px;
 }
-
-
-
 #savePopupButton {
   width: 100%;
 }
