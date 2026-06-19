@@ -233,6 +233,7 @@ function searchByName() {
 
   allCards.innerHTML = "";
 
+ 
   let foundMatch = false;
 
   for (let i = 0; i < fashionItems.length; i++) {
@@ -245,7 +246,7 @@ function searchByName() {
         break;
       }
     }
-    if (match == true) {
+    if (match == true && !itemName.includes(input) == false) {
       const matchCard =
         templateCard.cloneNode(true);
 
@@ -265,28 +266,58 @@ function searchByName() {
 }
 
 
-function filterOut(){
-  // Retrieve the text from the filterInput search bar 
-  const filterText = document.getElementById('filterInput').value.toLowerCase()
-  // rest of your function below: 
-  const arr = [];
+// my code to reverseSearch: function to add a second search bar to allow users to exclude letters
+ function reverseSearch() {
+const input = document.getElementById("reverseSearchInput").value.toLowerCase().trim();
+
+const allCards =
+  document.getElementById("card-container");
+
+const templateCard =
+  document.querySelector(".card");
+
+allCards.innerHTML = "";
+
+  for (let i = 0; i < fashionItems.length; i++) {
+    const itemName = fashionItems[i].name.toLowerCase();
+
+    if (!itemName.includes(input)) {
+    const card = templateCard.cloneNode(true);
+    editCardContent( card,fashionItems[i]);
+    allCards.appendChild(card);
+    }
+    }
+  }
+  
+ 
+
+// end of jackie code 
+
+//function filterOut(){
+//   // Retrieve the text from the filterInput search bar 
+// const filterText = document.getElementById('filterInput').value.toLowerCase()
+//   // rest of your function below: 
+  // const arr = [];
   
 
-//new array -> display cards
-  for(let i =0; i< fashionItems.length(); i++){ //[_,_,_]
-     if( !((fashionItems[i].names).includes(filterText))){
+// //new array -> display cards
+   //for(let i =0; i< fashionItems.length(); i++){ //[_,_,_]
+     //if( !((fashionItems[i].names).includes(filterText))){
 
-        arr.push(fashionItems[i]); 
-     }
+       // arr.push(fashionItems[i]); 
+     //}
 
-  }
-  //input of search -> check that with a part of the .name of
+  //}
+ //}
+  
+// 
+//input of search -> check that with a part of the .name of
  
   // for loop: compare it to go through array names.inlcudes("input")
 
   //.includes(//string)
   
-}
+
 
 
 function hideNoMatchMessage() {
@@ -558,6 +589,18 @@ document.addEventListener(
           savePopupChanges();
         }
       );
+// jackie code 
+      document
+      .getElementById("reverseSearchButton")
+      .addEventListener(
+        "click",
+        function (e) {
+          e.preventDefault();
+          hideNoMatchMessage();
+          reverseSearch();
+        }
+      );
+      // end of jackie code 
 
     document
       .getElementById(
